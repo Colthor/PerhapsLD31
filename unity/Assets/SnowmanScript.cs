@@ -50,7 +50,7 @@ public class SnowmanScript : ParticleSprite {
 		Vector3 nosePos = new Vector3(Mathf.Sin(m_Angle) * (TopRad + NoseLength), Mathf.Cos(m_Angle) * (TopRad + NoseLength), 0f);
 		for(i = 0; i < noseParticles; i++)
 		{
-			dp.DrawParticleInArc(topPos + nosePos, NoseLength, -m_Angle, NoseAngle, DrawParticles.ConePlane.CONE_Z, new Color(1.0f, 0.5f, 0.0f));
+			dp.DrawParticleInArc(topPos + nosePos, NoseLength, -m_Angle, NoseAngle, DrawParticles.ParticlePlane.PLANE_Z, new Color(1.0f, 0.5f, 0.0f));
 		}
 
 

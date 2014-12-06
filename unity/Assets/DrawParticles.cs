@@ -27,11 +27,11 @@ public class DrawParticles : MonoBehaviour {
 		}*/
 	}
 
-	public enum ConePlane
+	public enum ParticlePlane
 	{
-		CONE_X,
-		CONE_Y,
-		CONE_Z
+		PLANE_X,
+		PLANE_Y,
+		PLANE_Z
 	};
 
 	public float GetParticleDensity()
@@ -39,24 +39,22 @@ public class DrawParticles : MonoBehaviour {
 		return ParticleDensity;
 	}
 
-	public void DrawParticleInArc(Vector3 pos, float radius, float angle, float arcWidthAngle, ConePlane plane, Color colour)
+	public void DrawParticleWithVel(Vector3 pos, float radius, float angle, float velocity, ParticlePlane plane, Color colour)
 	{
-		float actualAngle = angle + Random.Range(-0.5f*arcWidthAngle, 0.5f*arcWidthAngle);
-		float dist = Random.Range(0, 1f);
-		dist = (1.0f - dist*dist) * radius; // Note: probably not perfectly uniform, but there aren't any sqrt()s
+		float dist = Random.Range(0, radius);
 
-		Vector3 localPos;
-		float x =dist * Mathf.Sin(actualAngle);
-		float y =dist * Mathf.Cos(actualAngle);
+		Vector3 localPos, Vel;
+		float x = Mathf.Sin(angle);
+		float y =  Mathf.Cos(angle);
 
 		switch(plane)
 		{
-		case ConePlane.CONE_X:
+		case ParticlePlane.PLANE_X:
 			localPos.x = 0;
 			localPos.y = x;
 			localPos.z = y;
 			break;
-		case ConePlane.CONE_Y:
+		case ParticlePlane.PLANE_Y:
 			localPos.x = x;
 			localPos.y = 0;
 			localPos.z = y;
@@ -68,8 +66,44 @@ public class DrawParticles : MonoBehaviour {
 			break;
 		}
 
+		Vel = localPos * velocity;
+		localPos *= dist;
 
-		particleSystem.Emit(pos + localPos, new Vector3(0,0,0), ParticleSize, ParticleLifespan, colour);
+
+		particleSystem.Emit(pos + localPos, Vel, ParticleSize, ParticleLifespan, colour);
+	}
+
+	public void DrawParticleInArc(Vector3 pos, float radius, float angle, float arcWidthAngle, ParticlePlane plane, Color colour, float emphasise = 1.0f)
+	{
+		float actualAngle = angle + Random.Range(-0.5f*arcWidthAngle, 0.5f*arcWidthAngle);
+		float dist = Random.Range(0, 1f);
+		dist = (1.0f - dist*dist) * radius; // Note: probably not perfectly uniform, but there aren't any sqrt()s
+		
+		Vector3 localPos;
+		float x =dist * Mathf.Sin(actualAngle);
+		float y =dist * Mathf.Cos(actualAngle);
+		
+		switch(plane)
+		{
+		case ParticlePlane.PLANE_X:
+			localPos.x = 0;
+			localPos.y = x;
+			localPos.z = y;
+			break;
+		case ParticlePlane.PLANE_Y:
+			localPos.x = x;
+			localPos.y = 0;
+			localPos.z = y;
+			break;
+		default:
+			localPos.x = x;
+			localPos.y = -y;
+			localPos.z = 0;
+			break;
+		}
+		
+		
+		particleSystem.Emit(pos + localPos, new Vector3(0,0,0), ParticleSize * emphasise, ParticleLifespan * emphasise, colour);
 	}
 
 

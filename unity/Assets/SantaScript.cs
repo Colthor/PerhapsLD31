@@ -38,7 +38,7 @@ public class SantaScript : ParticleSprite {
 		Vector3 hatPos = new Vector3(0,0,-10) + transform.position;
 		for(i = 0; i < hatParticles; i++)
 		{
-			dp.DrawParticleInArc(hatPos, 4.0f, 0.0f, 0.8f, DrawParticles.ConePlane.CONE_Y, Color.red);
+			dp.DrawParticleInArc(hatPos, 4.0f, 0.0f, 0.8f, DrawParticles.ParticlePlane.PLANE_Y, Color.red);
 		}
 	}
 
