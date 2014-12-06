@@ -48,6 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\CameraSizer.cs" />
      <Compile Include="Assets\DrawParticles.cs" />
+     <Compile Include="Assets\ParticleSprite.cs" />
+     <Compile Include="Assets\SantaScript.cs" />
+     <Compile Include="Assets\SnowmanScript.cs" />
+     <Compile Include="Assets\TreeScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

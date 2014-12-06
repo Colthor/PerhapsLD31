@@ -3,6 +3,10 @@ using System.Collections;
 
 public class DrawParticles : MonoBehaviour {
 
+	public float ParticleDensity	= 1.0f;
+	public float ParticleLifespan 	= 1.0f;
+	public float ParticleSize 		= 0.5f;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,17 +14,17 @@ public class DrawParticles : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		for(int i = 0; i < 10; i++)
+		/*for(int i = 0; i < 10; i++)
 		{
 			DrawParticleOnSphere(new Vector3(0,0,0), 3.0f, Color.yellow);
 			DrawParticleInArc(new Vector3(0,0,0), 10.0f, (int)(Time.realtimeSinceStartup * 0.95f), .3f, ConePlane.CONE_Z, Color.blue);
 			
 			DrawParticleOnSphere(new Vector3(10,0,0), 3.0f, Color.magenta);
 			DrawParticleInArc(new Vector3(10,0,0), 10.0f, (int)(Time.realtimeSinceStartup * 0.95f), .3f, ConePlane.CONE_Y, Color.green);
-			
+
 			DrawParticleOnSphere(new Vector3(-10,0,0), 3.0f, Color.cyan);
 			DrawParticleInArc(new Vector3(-10,0,0), 10.0f, (int)(Time.realtimeSinceStartup * 0.95f), .3f, ConePlane.CONE_X, Color.red);
-		}
+		}*/
 	}
 
 	public enum ConePlane
@@ -29,6 +33,11 @@ public class DrawParticles : MonoBehaviour {
 		CONE_Y,
 		CONE_Z
 	};
+
+	public float GetParticleDensity()
+	{
+		return ParticleDensity;
+	}
 
 	public void DrawParticleInArc(Vector3 pos, float radius, float angle, float arcWidthAngle, ConePlane plane, Color colour)
 	{
@@ -60,7 +69,7 @@ public class DrawParticles : MonoBehaviour {
 		}
 
 
-		particleSystem.Emit(pos + localPos, new Vector3(0,0,0), 1.0f, 3.0f, colour);
+		particleSystem.Emit(pos + localPos, new Vector3(0,0,0), ParticleSize, ParticleLifespan, colour);
 	}
 
 
@@ -74,7 +83,7 @@ public class DrawParticles : MonoBehaviour {
 		localPos.y = Mathf.Sin (phi) * Mathf.Sin (theta) * radius;
 		localPos.z = Mathf.Cos(phi) * radius;
 		
-		particleSystem.Emit(pos + localPos, new Vector3(0,0,0), 1.0f, 3.0f, colour);
+		particleSystem.Emit(pos + localPos, new Vector3(0,0,0), ParticleSize, ParticleLifespan, colour);
 
 	}
 }
