@@ -6,10 +6,17 @@ public class TreeScript : ParticleSprite {
 	public float LightEmphasis = 2.0f;
 	bool m_IsLit = true;
 
+	public void SetLit(bool alight)
+	{
+		m_IsLit = alight;
+		this.GetComponentInChildren<Light>().enabled = m_IsLit;
+	}
+
 	// Use this for initialization
 	new void Start ()
 	{
 		base.Start();
+		SetLit(m_IsLit);
 	}
 
 	private Color RandomColour()

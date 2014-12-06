@@ -5,7 +5,7 @@ public class DrawParticles : MonoBehaviour {
 
 	public float ParticleDensity	= 1.0f;
 	public float ParticleLifespan 	= 1.0f;
-	public float ParticleSize 		= 0.5f;
+	public float ParticleSize 		= 0.9f;
 
 	// Use this for initialization
 	void Start () {
