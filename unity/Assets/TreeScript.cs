@@ -4,12 +4,17 @@ using System.Collections;
 public class TreeScript : ParticleSprite {
 
 	public float LightEmphasis = 2.0f;
-	bool m_IsLit = true;
+	bool m_IsLit = false;
 
 	public void SetLit(bool alight)
 	{
 		m_IsLit = alight;
 		this.GetComponentInChildren<Light>().enabled = m_IsLit;
+	}
+
+	public bool IsLit()
+	{
+		return m_IsLit;
 	}
 
 	// Use this for initialization
@@ -123,6 +128,6 @@ public class TreeScript : ParticleSprite {
 	// Update is called once per frame
 	void Update ()
 	{
-		SpawnParticles();
+		if(!IsDead()) SpawnParticles();
 	}
 }

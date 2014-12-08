@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\CameraSizer.cs" />
      <Compile Include="Assets\DrawParticles.cs" />
+     <Compile Include="Assets\GameScript.cs" />
      <Compile Include="Assets\ParticleSprite.cs" />
      <Compile Include="Assets\SantaScript.cs" />
      <Compile Include="Assets\SnowmanScript.cs" />

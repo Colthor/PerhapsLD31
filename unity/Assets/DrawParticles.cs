@@ -73,10 +73,10 @@ public class DrawParticles : MonoBehaviour {
 		particleSystem.Emit(pos + localPos, Vel, ParticleSize, ParticleLifespan, colour);
 	}
 
-	public void DrawParticleInArc(Vector3 pos, float radius, float angle, float arcWidthAngle, ParticlePlane plane, Color colour, float emphasise = 1.0f)
+	public void DrawParticleInArc(Vector3 pos, float radius, float angle, float arcWidthAngle, ParticlePlane plane, Color colour, float emphasise = 1.0f, float MinRangeSqrted = 0.0f)
 	{
 		float actualAngle = angle + Random.Range(-0.5f*arcWidthAngle, 0.5f*arcWidthAngle);
-		float dist = Random.Range(0, 1f);
+		float dist = Random.Range(0.0f, 1f - MinRangeSqrted);
 		dist = (1.0f - dist*dist) * radius; // Note: probably not perfectly uniform, but there aren't any sqrt()s
 		
 		Vector3 localPos;

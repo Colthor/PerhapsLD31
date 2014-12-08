@@ -60,6 +60,6 @@ public class SnowmanScript : ParticleSprite {
 	// Update is called once per frame
 	void Update () {
 	
-		SpawnParticles();
+		if(!IsDead()) SpawnParticles();
 	}
 }
