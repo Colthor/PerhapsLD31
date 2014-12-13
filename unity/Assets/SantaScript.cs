@@ -38,6 +38,7 @@ public class SantaScript : ParticleSprite {
 			dp.DrawParticleInArc(beltPos, 6.5f, 0.0f, 1.0f, DrawParticles.ParticlePlane.PLANE_Y, Color.white, 1.0f, 0.9f);
 		}
 
+
 		Vector3 hatPos = new Vector3(0,0.0f,-9.0f) + transform.position;
 		for(i = 0; i < hatParticles; i++)
 		{

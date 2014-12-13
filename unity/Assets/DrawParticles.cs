@@ -39,6 +39,30 @@ public class DrawParticles : MonoBehaviour {
 		return ParticleDensity;
 	}
 
+	public Color RandomColour()
+	{
+		Color rv = new Color(0,0,0);
+		bool unset = true;
+		if(Random.Range(0, 2) < 1)
+		{
+			rv.r = 1.0f;
+			unset = false;
+		}
+		if(Random.Range(0, 2) < 1)
+		{
+			rv.g = 1.0f;
+			unset = false;
+		}
+		if(Random.Range(0, 2) < 1)
+		{
+			rv.b = 1.0f;
+			unset = false;
+		}
+		if(unset) rv.r = rv.b = rv.g = 1.0f;
+		
+		return rv;
+	}
+
 	public void DrawParticleWithVel(Vector3 pos, float radius, float angle, float velocity, ParticlePlane plane, Color colour)
 	{
 		float dist = Random.Range(0, radius);
@@ -71,6 +95,13 @@ public class DrawParticles : MonoBehaviour {
 
 
 		particleSystem.Emit(pos + localPos, Vel, ParticleSize, ParticleLifespan, colour);
+	}
+
+	public void DrawPermanentParticleInRadius(Vector3 pos, float radius, Color colour)
+	{
+		Vector3 localPos = Random.insideUnitCircle * radius;
+
+		particleSystem.Emit(pos + localPos, Vector3.zero, ParticleSize*3.0f, 200.0f, colour);
 	}
 
 	public void DrawParticleInArc(Vector3 pos, float radius, float angle, float arcWidthAngle, ParticlePlane plane, Color colour, float emphasise = 1.0f, float MinRangeSqrted = 0.0f)
@@ -107,7 +138,7 @@ public class DrawParticles : MonoBehaviour {
 	}
 
 
-	public void DrawParticleOnSphere(Vector3 pos, float radius, Color colour)
+	public void DrawParticleOnSphere(Vector3 pos, float radius, Color colour, float emphasise = 1.0f, bool negativeZOnly = false)
 	{
 
 		float theta = Random.Range (0f, 6.2831853f);
@@ -116,8 +147,9 @@ public class DrawParticles : MonoBehaviour {
 		localPos.x = Mathf.Sin(phi) * Mathf.Cos(theta) * radius;
 		localPos.y = Mathf.Sin (phi) * Mathf.Sin (theta) * radius;
 		localPos.z = Mathf.Cos(phi) * radius;
+		if(negativeZOnly && localPos.z > 0) localPos.z *=-1.0f;
 		
-		particleSystem.Emit(pos + localPos, new Vector3(0,0,0), ParticleSize, ParticleLifespan, colour);
+		particleSystem.Emit(pos + localPos, new Vector3(0,0,0), ParticleSize*emphasise, ParticleLifespan*emphasise, colour);
 
 	}
 }

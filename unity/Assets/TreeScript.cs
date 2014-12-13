@@ -24,29 +24,7 @@ public class TreeScript : ParticleSprite {
 		SetLit(m_IsLit);
 	}
 
-	private Color RandomColour()
-	{
-		Color rv = new Color(0,0,0);
-		bool unset = true;
-		if(Random.Range(0, 2) < 1)
-		{
-			rv.r = 1.0f;
-			unset = false;
-		}
-		if(Random.Range(0, 2) < 1)
-		{
-			rv.g = 1.0f;
-			unset = false;
-		}
-		if(Random.Range(0, 2) < 1)
-		{
-			rv.b = 1.0f;
-			unset = false;
-		}
-		if(unset) rv.r = rv.b = rv.g = 1.0f;
 
-		return rv;
-	}
 	private void SpawnParticles()
 	{
 		float particleCount = GetFrameParticles();
@@ -57,9 +35,6 @@ public class TreeScript : ParticleSprite {
 		int lightParticles  = (int)(particleCount * 0.05f);
 		int i = 0;
 		Color DullGreen = new Color(0, 0.75f, 0);
-
-		//if(lightParticles < 3) lightParticles = 3;
-		//if(starParticles < 5) starParticles = 5;
 		
 		SetLeftovers(bottomParticles + middleParticles + topParticles + starParticles + lightParticles);
 		
@@ -92,25 +67,17 @@ public class TreeScript : ParticleSprite {
 				case 0:
 				case 1:
 				case 2:
-					dp.DrawParticleInArc(transform.position, 6.5f, 0.0f, 1.8f, DrawParticles.ParticlePlane.PLANE_Y, RandomColour(), LightEmphasis);
+					dp.DrawParticleInArc(transform.position, 6.5f, 0.0f, 1.8f, DrawParticles.ParticlePlane.PLANE_Y, dp.RandomColour(), LightEmphasis);
 					break;
 				case 3:
 				case 4:
-					dp.DrawParticleInArc(middlePos, 5.5f, 0.0f, 1.5f, DrawParticles.ParticlePlane.PLANE_Y, RandomColour(), LightEmphasis);
+					dp.DrawParticleInArc(middlePos, 5.5f, 0.0f, 1.5f, DrawParticles.ParticlePlane.PLANE_Y, dp.RandomColour(), LightEmphasis);
 					break;
 				case 5:
-					dp.DrawParticleInArc(topPos, 3.5f, 0.0f, 1.25f, DrawParticles.ParticlePlane.PLANE_Y, RandomColour(), LightEmphasis);
+					dp.DrawParticleInArc(topPos, 3.5f, 0.0f, 1.25f, DrawParticles.ParticlePlane.PLANE_Y, dp.RandomColour(), LightEmphasis);
 					break;
 				}
 
-				/*if(Random.Range(0, 2) < 1)
-				{
-					dp.DrawParticleInArc(topPos, 3.5f, 0.0f, 1.25f, DrawParticles.ParticlePlane.PLANE_Y, RandomColour(), LightEmphasis);
-				}
-				else
-				{
-					dp.DrawParticleInArc(transform.position, 6.5f, 0.0f, 1.8f, DrawParticles.ParticlePlane.PLANE_Y, RandomColour(), LightEmphasis);
-				}*/
 				
 			}
 
