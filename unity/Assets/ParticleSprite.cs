@@ -4,7 +4,7 @@ using System.Collections;
 public class ParticleSprite : MonoBehaviour {
 
 	protected DrawParticles dp;
-	public float maxParticlesPerSecond=2500;
+	public float maxParticlesPerSecond=1500;
 	protected float m_Health;
 	private bool m_IsDead;
 	
@@ -16,7 +16,7 @@ public class ParticleSprite : MonoBehaviour {
 		return m_IsDead;
 	}
 
-	public void AdjustHealth(float adjustment)
+	virtual public void AdjustHealth(float adjustment)
 	{
 		if(!m_IsDead)
 		{

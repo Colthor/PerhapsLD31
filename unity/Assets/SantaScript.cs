@@ -15,6 +15,12 @@ public class SantaScript : ParticleSprite {
 		base.Start();
 	}
 
+	/*override public void AdjustHealth(float adjustment)
+	{
+		base.AdjustHealth(adjustment);
+		if(Mathf.Abs(adjustment) > .5f) Debug.Log("Santa health adj: " + adjustment + " health: " + m_Health);
+	}*/
+
 	private void SpawnParticles()
 	{
 		
@@ -35,7 +41,7 @@ public class SantaScript : ParticleSprite {
 		Vector3 beltPos = new Vector3(0f, -3f, -7.5f) + transform.position;
 		for(i = 0; i < beltParticles; i++)
 		{
-			dp.DrawParticleInArc(beltPos, 6.5f, 0.0f, 1.0f, DrawParticles.ParticlePlane.PLANE_Y, Color.white, 1.0f, 0.9f);
+			dp.DrawParticleInArc(beltPos, 6.5f,  0.5f*Mathf.PI, 1.0f, DrawParticles.ParticlePlane.PLANE_Y, Color.white, 1.0f, 0.9f);
 		}
 
 
@@ -49,10 +55,10 @@ public class SantaScript : ParticleSprite {
 				break;
 			case 1:
 			case 2:
-				dp.DrawParticleInArc(hatPos, 4.0f, 0.0f, 0.8f, DrawParticles.ParticlePlane.PLANE_Y, Color.white, 1.0f, 0.9f);
+				dp.DrawParticleInArc(hatPos, 4.0f, 0.5f*Mathf.PI, 0.8f, DrawParticles.ParticlePlane.PLANE_Y, Color.white, 1.0f, 0.9f);
 				break;
 			default:
-				dp.DrawParticleInArc(hatPos, 3.8f, 0.0f, 0.8f, DrawParticles.ParticlePlane.PLANE_Y, Color.red);
+				dp.DrawParticleInArc(hatPos, 3.8f, 0.5f*Mathf.PI, 0.8f, DrawParticles.ParticlePlane.PLANE_Y, Color.red);
 				break;
 			}
 		}

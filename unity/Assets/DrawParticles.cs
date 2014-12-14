@@ -111,8 +111,8 @@ public class DrawParticles : MonoBehaviour {
 		dist = (1.0f - dist*dist) * radius; // Note: probably not perfectly uniform, but there aren't any sqrt()s
 		
 		Vector3 localPos;
-		float x =dist * Mathf.Sin(actualAngle);
-		float y =dist * Mathf.Cos(actualAngle);
+		float x =dist * Mathf.Cos(actualAngle);
+		float y =dist * Mathf.Sin(actualAngle);
 		
 		switch(plane)
 		{

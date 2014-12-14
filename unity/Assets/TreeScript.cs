@@ -40,19 +40,19 @@ public class TreeScript : ParticleSprite {
 		
 		for(i = 0; i < bottomParticles; i++)
 		{
-			dp.DrawParticleInArc(transform.position, 6.5f, 0.0f, 1.8f, DrawParticles.ParticlePlane.PLANE_Y, DullGreen);
+			dp.DrawParticleInArc(transform.position, 6.5f,  0.5f*Mathf.PI, 1.8f, DrawParticles.ParticlePlane.PLANE_Y, DullGreen);
 		}
 
 		Vector3 middlePos = new Vector3(0f, 0f, -4.5f) + transform.position;
 		for(i = 0; i < middleParticles; i++)
 		{
-			dp.DrawParticleInArc(middlePos, 5.5f, 0.0f, 1.5f, DrawParticles.ParticlePlane.PLANE_Y, DullGreen);
+			dp.DrawParticleInArc(middlePos, 5.5f,  0.5f*Mathf.PI, 1.5f, DrawParticles.ParticlePlane.PLANE_Y, DullGreen);
 		}
 
 		Vector3 topPos = new Vector3(0f, 0f, -7.5f) + transform.position;
 		for(i = 0; i < topParticles; i++)
 		{
-			dp.DrawParticleInArc(topPos, 3.5f, 0.0f, 1.25f, DrawParticles.ParticlePlane.PLANE_Y, DullGreen);
+			dp.DrawParticleInArc(topPos, 3.5f,  0.5f*Mathf.PI, 1.25f, DrawParticles.ParticlePlane.PLANE_Y, DullGreen);
 		}
 
 		
@@ -67,14 +67,14 @@ public class TreeScript : ParticleSprite {
 				case 0:
 				case 1:
 				case 2:
-					dp.DrawParticleInArc(transform.position, 6.5f, 0.0f, 1.8f, DrawParticles.ParticlePlane.PLANE_Y, dp.RandomColour(), LightEmphasis);
+					dp.DrawParticleInArc(transform.position, 6.5f,  0.5f*Mathf.PI, 1.8f, DrawParticles.ParticlePlane.PLANE_Y, dp.RandomColour(), LightEmphasis);
 					break;
 				case 3:
 				case 4:
-					dp.DrawParticleInArc(middlePos, 5.5f, 0.0f, 1.5f, DrawParticles.ParticlePlane.PLANE_Y, dp.RandomColour(), LightEmphasis);
+					dp.DrawParticleInArc(middlePos, 5.5f,  0.5f*Mathf.PI, 1.5f, DrawParticles.ParticlePlane.PLANE_Y, dp.RandomColour(), LightEmphasis);
 					break;
 				case 5:
-					dp.DrawParticleInArc(topPos, 3.5f, 0.0f, 1.25f, DrawParticles.ParticlePlane.PLANE_Y, dp.RandomColour(), LightEmphasis);
+					dp.DrawParticleInArc(topPos, 3.5f,  0.5f*Mathf.PI, 1.25f, DrawParticles.ParticlePlane.PLANE_Y, dp.RandomColour(), LightEmphasis);
 					break;
 				}
 
