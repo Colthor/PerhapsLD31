@@ -1,4 +1,8 @@
-PerhapsLD31
+Sekrit Christmas Jam 2014 Entry
 ===========
 
-Possibly LD31, possibly Sekrit Christmas
+Originally possibly LD31 and possibly Sekrit Christmas Jam, now we know.
+
++ and - adjust the number of particles.
+
+You'll figure the rest out, I'm sure.
