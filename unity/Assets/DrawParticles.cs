@@ -39,6 +39,12 @@ public class DrawParticles : MonoBehaviour {
 		return ParticleDensity;
 	}
 
+	public void UpdateParticleDensity(float amount)
+	{
+		ParticleDensity += amount;
+		if(ParticleDensity < 0.1f) ParticleDensity = 0.1f;
+	}
+
 	public Color RandomColour()
 	{
 		Color rv = new Color(0,0,0);

@@ -103,10 +103,25 @@ public class GameScript : MonoBehaviour {
 		GameLostTime = Time.time;
 	}
 
+	void ControlParticleRate()
+	{
+		DrawParticles dp = GetComponent<DrawParticles>();
+		if(Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.KeypadPlus))
+		{
+			dp.UpdateParticleDensity(0.1f);
+		}
+		else if(Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus))
+		{
+			dp.UpdateParticleDensity(-0.1f);
+		}
+
+	}
+
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		ControlParticleRate();
 		if(LostGame)
 		{
 			PlayLoseGame();
